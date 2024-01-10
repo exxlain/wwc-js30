@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="eu-US">
+  <head>
+    <meta charset="utf-8"/>
+    <title>cats sounds</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+  </head>
+  <body>
+    <section>
+      <ul class="list">
+        <li class="list-item">
+          <button data-key="65" type="button">
+            <h1>A</h1>
+            <img
+              src="paw.svg"
+              alt="paw"
+              height="70"
+            />
+          </button>
+        </li>
+        <li class="list-item">
+          <button data-key='83'>
+          <h1>S</h1>
+          <img
+            src="paw.svg"
+            alt="paw"
+            height="70"
+          />
+        </button>
+        </li>
+        <li class="list-item">
+          <button data-key=68><h1>D</h1>
+          <img
+            src="paw.svg"
+            alt="paw"
+            height="70"
+          />
+        </button>
+        </li>
+        <li class="list-item">
+          <button data-key="70"><h1>F</h1>
+          <img
+            src="paw.svg"
+            alt="paw"
+            height="70"
+          />
+        </button>
+        </li>
+      </ul>
+    </section>
+    <audio data-key="65" src="sounds/meou-1.wav"></audio>
+    <audio data-key="83" src="sounds/meou-2.wav"></audio>
+    <audio data-key="68" src="sounds/meou-4.wav"></audio>
+    <audio data-key="70" src="sounds/meou-5.wav"></audio>
+
+    <script>
+      const handleKeyDown =(e)=>{
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+        const key = document.querySelector(`button[data-key="${e.keyCode}"]`)
+        if (!audio) return
+        key.classList.add('playing')
+        audio.play()
+      }
+
+      const handleButtonPress =(button)=>{
+        const key = button.getAttribute('data-key')
+        const audio = document.querySelector(`audio[data-key="${key}"]`)
+        if (!audio) return
+        button.classList.add('playing')
+        audio.play()
+      }
+
+      function removeTransition(e) {
+        if (e.propertyName !== 'transform') return;
+        e.target.classList.remove('playing');
+      }
+
+      window.addEventListener('keydown', handleKeyDown)
+
+      const buttons =  document.querySelectorAll("button")
+      buttons.forEach(button=>button.addEventListener('click', ()=>handleButtonPress(button)))
+      buttons.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+    </script>
+  </body>
+</html>
