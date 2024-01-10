@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="eu-US">
+  <head>
+    <meta charset="utf-8">
+    <title>clock</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+   <section class="clock-section">
+      <div class="clock-frame">
+        <div class="arrow hours"></div>
+        <div class="arrow minutes"></div>
+        <div class="arrow seconds"></div>
+      </div>
+   </section>
+
+  <script>
+  const hoursArrow = document.querySelector('.hours')
+  const minutesArrow = document.querySelector('.minutes')
+  const secondsArrow = document.querySelector('.seconds')
+
+  const updateClock =()=>{
+      const currentDate = new Date()
+      const hours = currentDate.getHours()
+      const minutes = currentDate.getMinutes()
+      const seconds = currentDate.getSeconds()
+
+      const hoursDegrees = 360/60 * hours
+      const minutesDegrees = 360/60 * minutes
+      const secondsDegrees = 360/60 * seconds
+
+      hoursArrow.style.transform = `rotate(${hoursDegrees}deg)`
+      minutesArrow.style.transform = `rotate(${minutesDegrees}deg)`
+      secondsArrow.style.transform = `rotate(${secondsDegrees}deg)`
+  }
+
+  setInterval(updateClock, 1000)
+  </script>
+
+  </body>
+</html>
