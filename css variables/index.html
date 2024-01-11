@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>CSS variables</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <div class="content-wrapper">
+  <ui class="controls">
+    <li class="controls-item">
+      <input type="range" id="spacing" data-type="px" min="1" max="30" value="1"/>
+      <label for="spacing">Spacing</label>
+    </li>
+    <li class="controls-item">
+      <input type="range" id="blur" data-type="px" min="0" max="25" value="0"/>
+      <label for="blur">Blur</label>
+    </li>
+    <li class="controls-item">
+      <input type="color" id="base" data-type=""/>
+      <label for="base">Color</label>
+    </li>
+  </ui>
+  <section>
+    <img src="./cat.jpg" class="picture">
+  </section>
+ </div>
+
+  <script>
+  const inputs = document.querySelectorAll('.controls input')
+
+  const changeValue =(e, input)=>{
+      const dataType = input.getAttribute('data-type')
+      document.documentElement.style.setProperty(`--${input.id}`, e.target.value + dataType);
+  }
+
+  inputs.forEach(input=>input.addEventListener('mousemove', (e)=>changeValue(e, input)))
+  inputs.forEach(input=>input.addEventListener('change', (e)=>changeValue(e, input)))
+  </script>
+
+</body>
