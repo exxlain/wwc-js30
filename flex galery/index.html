@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="eu-US">
+<head>
+  <meta charset="utf-8" />
+  <title>flex gallery</title>
+  <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<ul class="panels">
+  <li class="panel panel1">
+    <p>Hey</p>
+    <p>Let's</p>
+    <p>Dance</p>
+  </li>
+  <li class="panel panel2">
+    <p>Give</p>
+    <p>Take</p>
+    <p>Receive</p>
+  </li>
+  <li class="panel panel3">
+    <p>Experience</p>
+    <p>It</p>
+    <p>Today</p>
+  </li>
+  <li class="panel panel4">
+    <p>Give</p>
+    <p>All</p>
+    <p>You can</p>
+  </li>
+  <li class="panel panel5">
+    <p>Life</p>
+    <p>In</p>
+    <p>Motion</p>
+  </li>
+</ul>
+
+<script>
+  const panels = document.querySelectorAll('.panel')
+
+  const toggleOpen = (panel) =>{
+    panel.classList.toggle('open')
+  }
+
+  const toggleActive = (e, panel) =>{
+    if(e.propertyName.includes('flex')){
+      panel.classList.toggle('open-active')
+    }
+  }
+
+  panels.forEach(panel=>panel.addEventListener('click', ()=>{toggleOpen(panel)}))
+  panels.forEach(panel=>panel.addEventListener('transitionend', (e)=>{toggleActive(e, panel)}))
+
+</script>
+</body>
